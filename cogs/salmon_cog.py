@@ -17,7 +17,8 @@ class SalmonCog(commands.Cog):
     # コマンドの記述
     @commands.command()
     async def salmon(self, ctx):
-            await ctx.send(maketext())
+        txt,self.next=maketext()
+        await ctx.send(txt)
 
     @tasks.loop(minutes=1)
     async def notif(self):
@@ -26,8 +27,7 @@ class SalmonCog(commands.Cog):
         if self.next - now <timedelta(minutes=-1):
             for channel in self.channels:
                 print(f"send to {channel}")
-                txt,self.next=maketext()
-                await channel.send(txt)
+                
         
     @commands.command()
     async def notif_set(self,ctx):

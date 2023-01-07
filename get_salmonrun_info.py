@@ -1,22 +1,8 @@
-import requests
-import json
+from get_spla_info import get_spla_info
 from datetime import datetime
 
-def get_salmonrun_schedule():
-
-    header={"user-agent":"salmonrun-notification-bot/0.1, Twitter @Chroma7p)"}
-    p1="coop-grouping"#salmonrun
-    p2="schedule"     #schedule
-    res=requests.get(f"https://spla3.yuu26.com/api/{p1}/{p2}",headers=header)
-    #print(res.status_code)
-    if res.status_code == 200:
-        #print(res.text)
-        result=json.loads(res.text)
-        return result["results"]
-    return {"fail":True}
-
 def maketext():
-    schedule=get_salmonrun_schedule()
+    schedule=get_spla_info("coop-grouping","schedule")
     if "fail" in schedule:
         return "情報の取得に失敗しました",None
     text=""

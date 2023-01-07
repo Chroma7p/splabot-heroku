@@ -1,12 +1,11 @@
 # discord.pyの大事な部分をimport
 from discord.ext import commands,tasks
-import discord
+from cogs.salmon_cog import SalmonCog
+from cogs.regular_cog import RegularCog
 import os
-from cogs.salmon_cog import SalmonCog,maketext
-import sys
-import time
+import discord
 
-cogs = [SalmonCog]
+cogs = [SalmonCog,RegularCog]
 
 APITOKEN= os.environ["SPLATOON_BOT_TOKEN"]
 

@@ -23,12 +23,12 @@ class SalmonCog(commands.Cog):
     @tasks.loop(minutes=1)
     async def notif(self):
         now=datetime.now(tz=tz_jst)
-        print(now,self.next,self.next - now)
+
         if self.next - now <timedelta(minutes=-1):
             for channel in self.channels:
                 txt,self.next=maketext()
                 await channel.send(txt)
-                print(f"send to {channel}")
+
                 
         
     @commands.command()

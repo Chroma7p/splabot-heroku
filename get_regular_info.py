@@ -9,7 +9,7 @@ def maketext():
     if "fail" in schedule or "fail" in fest_schedule:
         return "情報の取得に失敗しました"
     text=""
-    for i,day in enumerate(schedule):
+    for i,day in enumerate(schedule[:3]):
         if i==0:
             text+="**現在**\n"
         elif i==1:
@@ -33,5 +33,4 @@ def maketext():
         
 
     return text
-
 

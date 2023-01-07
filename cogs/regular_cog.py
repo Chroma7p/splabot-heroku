@@ -4,14 +4,11 @@ from get_regular_info import maketext
 class RegularCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.channels=set()
-        self.notif.start()
-        txt,self.next=maketext()
 
     # コマンドの記述
     @commands.command()
     async def regular(self, ctx):
-        txt,self.next=maketext()
+        txt=maketext()
         await ctx.send(txt)
 
 

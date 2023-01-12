@@ -20,6 +20,7 @@ def maketext():
         end:datetime=datetime.strptime(day["end_time"],"%Y-%m-%dT%H:%M:%S%z")
         text+=f"{start.strftime('%Y-%m-%d %H:%M')}~{end.strftime('%Y-%m-%d %H:%M')}\n"
         if day["is_fest"]:
+            text+="**フェス開催中!**\n"
             fesday=fest_schedule[i]
             stages=fesday["stages"]
             for stage in stages:
@@ -27,6 +28,11 @@ def maketext():
             if fesday["is_tricolor"]:
                 text+="***トリカラバトル***\n"
                 text+=f"{fesday['tricolor_stage']['name']}\n"
+        else:
+            stages=day["stages"]
+            for stage in stages:
+                text+=f"{stage['name']}\n"
+
             
         text+="\n"
 

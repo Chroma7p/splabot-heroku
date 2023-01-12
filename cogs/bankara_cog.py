@@ -1,7 +1,7 @@
 from discord.ext import commands,tasks
 from get_bankara_info import maketext
 
-class OpenCog(commands.Cog):
+class BankaraCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -21,5 +21,5 @@ class OpenCog(commands.Cog):
 
 # Cogとして使うのに必要なsetup関数
 def setup(bot):
-    print("OpenCog OK")
-    return bot.add_cog(OpenCog(bot))
+    print("BankaraCog OK")
+    return bot.add_cog(BankaraCog(bot))

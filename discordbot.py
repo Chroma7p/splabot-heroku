@@ -2,10 +2,11 @@
 from discord.ext import commands,tasks
 from cogs.salmon_cog import SalmonCog
 from cogs.regular_cog import RegularCog
+from cogs.bankara_cog import BankaraCog
 import os
 import discord
 
-cogs = [SalmonCog,RegularCog]
+cogs = [SalmonCog,RegularCog,BankaraCog]
 
 APITOKEN= os.environ["SPLATOON_BOT_TOKEN"]
 

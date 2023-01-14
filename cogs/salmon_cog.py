@@ -43,7 +43,7 @@ class SalmonCog(commands.Cog):
 
     @commands.command()
     async def notif_check(self,ctx):
-        txt=""
+        txt=f"{self.next}\n"
         for channel in self.channels:
             txt+=f"{channel}\n"
         await ctx.send(txt)

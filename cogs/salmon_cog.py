@@ -41,6 +41,13 @@ class SalmonCog(commands.Cog):
         self.channels.remove(ctx.channel)
         await ctx.send("通知設定を削除しました！")
 
+    @commands.command()
+    async def notif_check(self,ctx):
+        txt=""
+        for channel in self.channels:
+            txt+=f"{channel}\n"
+        await ctx.send(txt)
+
     
 
 

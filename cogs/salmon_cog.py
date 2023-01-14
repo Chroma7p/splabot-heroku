@@ -20,14 +20,17 @@ class SalmonCog(commands.Cog):
         txt,self.next=maketext()
         await ctx.send(txt)
 
-    @tasks.loop(minutes=1)
+    @tasks.loop(minutes=3)
     async def notif(self):
         now=datetime.now(tz=tz_jst)
 
-        if abs(self.next - now) <timedelta(seconds=35):
+        if self.next < now:
+
             for channel in self.channels:
                 txt,self.next=maketext()
                 await channel.send(txt)
+            print(f"notif fire:{now}")
+            print(f"next:{self.next}")
 
                 
         

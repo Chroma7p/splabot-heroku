@@ -1,7 +1,7 @@
 from discord.ext import commands,tasks
 from get_salmonrun_info import maketext
 from datetime import datetime,timedelta,timezone
-
+from cogs.notif_channel import channels
 
 tz_jst = timezone(timedelta(hours=9))
 
@@ -10,7 +10,7 @@ tz_jst = timezone(timedelta(hours=9))
 class SalmonCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.channels=set()
+        self.channels=channels
         self.notif.start()
         txt,self.next=maketext()
 
@@ -25,15 +25,19 @@ class SalmonCog(commands.Cog):
         now=datetime.now(tz=tz_jst)
 
         if self.next < now:
-
-            for channel in self.channels:
+            for channel_id in self.channels:
+                channel= self.bot.get_channel(channel_id)
                 txt,self.next=maketext()
                 await channel.send(txt)
             print(f"notif fire:{now}")
             print(f"next:{self.next}")
 
                 
-        
+    @commands.command()
+    async def notif_chk(self,ctx):
+        channel= self.bot.get_channel(1066171843498750042)
+        await channel.send("1066171843498750042 is here!")
+
     @commands.command()
     async def notif_set(self,ctx):
         self.channels.add(ctx.channel)

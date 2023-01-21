@@ -33,19 +33,15 @@ class SalmonCog(commands.Cog):
             print(f"next:{self.next}")
 
                 
-    @commands.command()
-    async def notif_chk(self,ctx):
-        channel= self.bot.get_channel(1066171843498750042)
-        await channel.send("1066171843498750042 is here!")
 
     @commands.command()
     async def notif_set(self,ctx):
-        self.channels.add(ctx.channel)
+        self.channels.add(ctx.channel.id)
         await ctx.send("通知を設定しました！")
 
     @commands.command()
     async def notif_unset(self,ctx):
-        self.channels.remove(ctx.channel)
+        self.channels.remove(ctx.channel.id)
         await ctx.send("通知設定を削除しました！")
 
     @commands.command()

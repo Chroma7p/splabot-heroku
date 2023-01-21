@@ -25,9 +25,9 @@ class SalmonCog(commands.Cog):
         now=datetime.now(tz=tz_jst)
 
         if self.next < now:
+            txt,self.next=maketext()
             for channel_id in self.channels:
                 channel= self.bot.get_channel(channel_id)
-                txt,self.next=maketext()
                 await channel.send(txt)
             print(f"notif fire:{now}")
             print(f"next:{self.next}")

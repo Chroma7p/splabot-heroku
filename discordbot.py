@@ -40,8 +40,3 @@ async def main():
         await bot.start(APITOKEN)
 
 asyncio.run(main())
-
-
-
-# 起動
-bot.run(APITOKEN)

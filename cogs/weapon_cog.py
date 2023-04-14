@@ -26,7 +26,7 @@ class WeaponCog(commands.Cog):
         txt=""
         for i in range(n):
             weapon=random.choice(self.weapons)
-            txt+=f"{weapon.main} ({weapon.weapon_type}): Sub = {weapon.sub}, Special = {weapon.special}, Point = {weapon.point}\n"
+            txt+=f"{str(weapon)}\n"
 
         await interaction.response.send_message(txt)
 

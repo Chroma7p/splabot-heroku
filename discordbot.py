@@ -3,13 +3,14 @@ from discord.ext import commands,tasks
 from cogs.salmon_cog import SalmonCog
 from cogs.regular_cog import RegularCog
 from cogs.bankara_cog import BankaraCog
+from cogs.weapon_cog import WeaponCog
 import os
 import discord
 from dotenv import load_dotenv
 import asyncio
 load_dotenv(".env")
 
-cogs = [SalmonCog,RegularCog,BankaraCog]
+cogs = [SalmonCog,RegularCog,BankaraCog,WeaponCog]
 
 APITOKEN= os.environ["SPLATOON_BOT_TOKEN"]
 
@@ -30,7 +31,7 @@ async def main():
     # コグのフォルダ
     cogfolder = "cogs."
     # そして使用するコグの列挙(拡張子無しのファイル名)
-    cogs = ["bankara_cog", "regular_cog", "salmon_cog"]
+    cogs = ["bankara_cog", "regular_cog", "salmon_cog" ,"weapon_cog"]
 
     for c in cogs:
         await bot.load_extension(cogfolder + c)

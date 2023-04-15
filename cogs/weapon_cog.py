@@ -51,6 +51,21 @@ class WeaponCog(commands.Cog):
             txt=str(e)
         await interaction.response.send_message(txt)
 
+    @app_commands.command(name="search",description="ブキの情報を検索します。")
+    async def search(self, interaction:discord.Interaction, *, name:str):
+        try:
+            weapons=filter_weapons(self.weapons,sub_type=name,soft=True)
+            weapons+=filter_weapons(self.weapons,special_type=name,soft=True)
+            weapons+=[weapon for weapon in self.weapons if name in weapon.main]
+            if len(weapons)==0:
+                txt= f"'***{name}***'で検索して何も見つからなかったよ…"
+            txt=f"'***{name}***'で検索して{len(weapons)}件見つかったよ！\n"
+            for weapon in weapons:
+                txt+=f"{str(weapon)}\n"
+        except Exception as e:
+            txt=str(e)
+        return await interaction.response.send_message(txt)
+
 
 
 

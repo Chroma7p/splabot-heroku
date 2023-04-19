@@ -15,12 +15,25 @@ class SalmonCog(commands.Cog):
         self.channels=channels
         self.notif.start()
         txt,self.next=maketext()
+        
+        
 
     # Cogが読み込まれた時に発動
     @commands.Cog.listener()
     async def on_ready(self):
         print('SalmonCog on ready!')
+        await self.update_presence()
 
+    async def update_presence(self):
+        try:
+            now=datetime.now(tz=tz_jst)
+            time_for_next=self.next-now
+            txt=f"[あと{time_for_next.seconds//3600+time_for_next.days*24}時間]{self.next.strftime('%d日%H:%M')}まで サーモンラン"
+            print(txt)
+            await self.bot.change_presence(activity=discord.Game(name=txt))
+        except Exception as e:
+            print(e)
+            
     # コマンドの記述
     @app_commands.command(name="salmon",description="現在のサーモンランの情報を表示します。")
     async def salmon(self, interaction:discord.Interaction):
@@ -33,12 +46,12 @@ class SalmonCog(commands.Cog):
 
         if self.next < now:
             txt,self.next=maketext()
+            if not self.next:
+                return
             for channel_id in self.channels:
                 channel= self.bot.get_channel(channel_id)
                 await channel.send(txt)
-            print(f"notif fire:{now}")
-            print(f"next:{self.next}")
-
+            await self.update_presence()
                 
 
     @app_commands.command(name="notif_set",description="通知設定を追加します。")
@@ -59,7 +72,7 @@ class SalmonCog(commands.Cog):
         await interaction.response.send_message(txt)
 
     
-
+    
 
 # Cogとして使うのに必要なsetup関数
 def setup(bot):

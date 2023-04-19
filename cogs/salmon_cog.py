@@ -43,7 +43,7 @@ class SalmonCog(commands.Cog):
     @tasks.loop(minutes=3)
     async def notif(self):
         now=datetime.now(tz=tz_jst)
-
+        await self.update_presence()
         if self.next < now:
             txt,self.next=maketext()
             if not self.next:
@@ -51,7 +51,7 @@ class SalmonCog(commands.Cog):
             for channel_id in self.channels:
                 channel= self.bot.get_channel(channel_id)
                 await channel.send(txt)
-            await self.update_presence()
+            
                 
 
     @app_commands.command(name="notif_set",description="通知設定を追加します。")

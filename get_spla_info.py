@@ -8,5 +8,7 @@ def get_spla_info(p1,p2):
     if res.status_code == 200:
         #print(res.text)
         result=json.loads(res.text)
+        if not "results" in result:
+            return result["result"]
         return result["results"]
     return {"fail":True}

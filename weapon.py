@@ -11,7 +11,7 @@ class Weapon:
     def __str__(self):
         return f"[{self.weapon_type}] **{self.main}** : {self.sub}, {self.special}, {self.point}pt"
 
-def get_weapon_info(file_name = 'spla3_3_1.csv'):
+def get_weapon_info(file_name = 'weapondata.csv'):
     weapon_list = []
     
     with open(file_name, mode='r', encoding='utf-8') as csvfile:

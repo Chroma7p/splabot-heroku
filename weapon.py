@@ -50,5 +50,12 @@ def filter_weapons(weapons, weapon_type=None, sub_type=None, special_type=None, 
            (special_type is None or weapon.special == special_type):
             filtered_weapons.append(weapon)
         
-    
     return filtered_weapons
+
+def salmon_weapon_info(name):
+    if name=="ランダム":
+        return "**ランダム**"
+    print(f"searching {name}")
+    weapon_list = get_weapon_info()
+    weapon = [weapon for weapon in weapon_list if weapon.main == name]
+    return f"[{weapon[0].weapon_type}] **{weapon[0].main}**"

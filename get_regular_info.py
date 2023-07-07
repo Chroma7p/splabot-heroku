@@ -8,14 +8,14 @@ def maketext():
     fest_schedule=get_spla_info("fest","schedule")
     if "fail" in schedule or "fail" in fest_schedule:
         return "情報の取得に失敗しました"
-    text=""
+    text="## **レギュラーマッチ**\n"
     for i,day in enumerate(schedule[:3]):
         if i==0:
-            text+="**現在**\n"
+            text+="### **現在**\n"
         elif i==1:
-            text+="**つぎ**\n"
+            text+="### **つぎ**\n"
         elif i==2:
-            text+="**そのつぎ**\n"
+            text+="### **そのつぎ**\n"
         start:datetime=datetime.strptime(day["start_time"],"%Y-%m-%dT%H:%M:%S%z")
         end:datetime=datetime.strptime(day["end_time"],"%Y-%m-%dT%H:%M:%S%z")
         text+=f"{start.strftime('%Y-%m-%d %H:%M')}~{end.strftime('%Y-%m-%d %H:%M')}\n"
@@ -32,11 +32,6 @@ def maketext():
             stages=day["stages"]
             for stage in stages:
                 text+=f"{stage['name']}\n"
-
-            
-        text+="\n"
-
-        
-
+                
     return text
 

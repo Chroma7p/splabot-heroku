@@ -1,5 +1,6 @@
 from get_spla_info import get_spla_info
 from datetime import datetime
+from weapon import salmon_weapon_info
 
 def maketext():
     schedule=get_spla_info("coop-grouping","schedule")
@@ -20,5 +21,5 @@ def maketext():
         text+=f"__***{stage}***__\n"
         weapons=day["weapons"]
         for weapon in weapons:
-            text+=f"{weapon['name']}\n"
+            text+=f"{salmon_weapon_info(weapon['name'])}\n"
     return text,datetime.strptime(schedule[1]["start_time"],"%Y-%m-%dT%H:%M:%S%z")

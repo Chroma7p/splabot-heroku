@@ -31,7 +31,7 @@ async def main():
     # コグのフォルダ
     cogfolder = "cogs."
     # そして使用するコグの列挙(拡張子無しのファイル名)
-    cogs = ["bankara_cog", "regular_cog", "salmon_cog" ,"weapon_cog","x_cog","now_cog"]
+    cogs = ["bankara_cog", "regular_cog", "salmon_cog" ,"weapon_cog","x_cog","now_cog","event_cog"]
 
     for c in cogs:
         await bot.load_extension(cogfolder + c)

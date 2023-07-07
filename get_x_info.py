@@ -23,11 +23,5 @@ def maketext():
         stages=day["stages"]
         for stage in stages:
             text+=f"{stage['name']}\n"
-
-            
-        text+="\n"
-
-        
-
     return text
 

@@ -13,7 +13,7 @@ class EventCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.channels=channels
-        #self.notif.start()
+        self.notif.start()
         self.next=get_next()
         
         

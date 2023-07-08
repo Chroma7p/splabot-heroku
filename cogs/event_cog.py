@@ -36,7 +36,8 @@ class EventCog(commands.Cog):
     @tasks.loop(minutes=3)
     async def notif(self):
         now=datetime.now(tz=tz_jst)
-        if self.next + timedelta(minutes=3) < now:
+        print(now,self.next)
+        if self.next < now:
             txt,self.next=makenotif()
             if not self.next:
                 return

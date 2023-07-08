@@ -1,7 +1,7 @@
 from get_spla_info import get_spla_info
 from datetime import datetime
 
-def makenotif(isstart:bool):
+def makenotif():
     schedule = get_spla_info("event", "schedule")
     event=schedule[0]
     next_event=schedule[1]

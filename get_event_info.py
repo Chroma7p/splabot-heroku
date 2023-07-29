@@ -9,7 +9,7 @@ def makenotif():
     end:datetime=datetime.strptime(event["end_time"],"%Y-%m-%dT%H:%M:%S%z")
     next_start:datetime=datetime.strptime(next_event["start_time"],"%Y-%m-%dT%H:%M:%S%z")
     text=f"イベントマッチが始まりました\n{start.strftime('%Y-%m-%d %H:%M')}~{end.strftime('%Y-%m-%d %H:%M')}\n"
-    text+=f"## **{event['event']}**\n"
+    text+=f"## **{event['event']['name']}**\n"
     text+=f"{event['event']['desc']}\n"
     text+=f"__***{event['rule']['name']}***__\n"
     for stage in event["stages"]:

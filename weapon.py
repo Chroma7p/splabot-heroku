@@ -45,7 +45,7 @@ def filter_weapons(weapons, weapon_type=None, sub_type=None, special_type=None, 
                (sub_type is None or sub_type in weapon.sub) and \
                (special_type is None or special_type in weapon.special):
                 filtered_weapons.append(weapon)
-        if (weapon_type is None or weapon.weapon_type == weapon_type) and \
+        elif (weapon_type is None or weapon.weapon_type == weapon_type) and \
            (sub_type is None or weapon.sub == sub_type) and \
            (special_type is None or weapon.special == special_type):
             filtered_weapons.append(weapon)

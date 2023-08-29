@@ -55,6 +55,8 @@ def filter_weapons(weapons, weapon_type=None, sub_type=None, special_type=None, 
 def salmon_weapon_info(name):
     if name=="ランダム":
         return "**ランダム**"
+    if name=="はてな":
+        return "**不明**"
     print(f"searching {name}")
     weapon_list = get_weapon_info()
     weapon = [weapon for weapon in weapon_list if weapon.main == name]

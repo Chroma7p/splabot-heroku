@@ -18,6 +18,8 @@ def maketext():
         end:datetime=datetime.strptime(day["end_time"],"%Y-%m-%dT%H:%M:%S%z")
         text+=f"{start.strftime('%Y-%m-%d %H:%M')}~{end.strftime('%Y-%m-%d %H:%M')}\n"
         stage=day["stage"]["name"]
+        if stage=="":
+            stage="不明"
         text+=f"__***{stage}***__\n"
         weapons=day["weapons"]
         for weapon in weapons:

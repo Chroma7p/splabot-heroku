@@ -2,7 +2,7 @@ import csv
 
 
 class Weapon:
-    def __init__(self, main, weapon_type, sub, special, point):
+    def __init__(self, main, weapon_type, sub, special, point=0):
         self.main = main
         self.weapon_type = weapon_type
         self.sub = sub
@@ -10,7 +10,7 @@ class Weapon:
         self.point = point
 
     def __str__(self):
-        return f"[{self.weapon_type}] **{self.main}** : {self.sub}, {self.special}, {self.point}pt"
+        return f"[{self.weapon_type}] **{self.main}** : {self.sub}, {self.special}"
 
 
 def get_weapon_info(file_name='weapondata.csv'):
@@ -21,7 +21,10 @@ def get_weapon_info(file_name='weapondata.csv'):
         next(csv_reader)  # Skip header row
         for row in csv_reader:
             print(row)
-            weapon = Weapon(row[0], row[1], row[2], row[3], int(row[4]))
+            if len(row) == 5:
+                weapon = Weapon(row[0], row[1], row[2], row[3], int(row[4]))
+            elif len(row) == 4:
+                weapon = Weapon(row[0], row[1], row[2], row[3])
             weapon_list.append(weapon)
 
     return weapon_list

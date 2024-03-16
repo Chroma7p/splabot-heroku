@@ -20,7 +20,6 @@ def get_weapon_info(file_name='weapondata.csv'):
         csv_reader = csv.reader(csvfile, delimiter=',')
         next(csv_reader)  # Skip header row
         for row in csv_reader:
-            print(row)
             if len(row) == 5:
                 weapon = Weapon(row[0], row[1], row[2], row[3], int(row[4]))
             elif len(row) == 4:

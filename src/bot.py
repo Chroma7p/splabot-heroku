@@ -8,15 +8,20 @@ import os
 import discord
 from dotenv import load_dotenv
 import asyncio
+
 load_dotenv(".env")
 
-cogs = [SalmonCog,RegularCog,BankaraCog,WeaponCog]
+cogs = [SalmonCog, RegularCog, BankaraCog, WeaponCog]
 
-APITOKEN= os.environ["SPLATOON_BOT_TOKEN"]
+APITOKEN = os.environ["SPLATOON_BOT_TOKEN"]
 
 
 # botのオブジェクトを作成(コマンドのトリガーを!に)
-bot = commands.Bot(command_prefix="/",intents=discord.Intents.all(), application_id=os.environ["SPLATOON_BOT_ID"])
+bot = commands.Bot(
+    command_prefix="/",
+    intents=discord.Intents.all(),
+    application_id=os.environ["SPLATOON_BOT_ID"],
+)
 
 
 # イベントを検知
@@ -31,7 +36,14 @@ async def main():
     # コグのフォルダ
     cogfolder = "cogs."
     # そして使用するコグの列挙(拡張子無しのファイル名)
-    cogs = ["bankara_cog", "regular_cog", "salmon_cog" ,"weapon_cog","x_cog","now_cog"]
+    cogs = [
+        "bankara_cog",
+        "regular_cog",
+        "salmon_cog",
+        "weapon_cog",
+        "x_cog",
+        "now_cog",
+    ]
 
     for c in cogs:
         await bot.load_extension(cogfolder + c)
@@ -39,5 +51,6 @@ async def main():
     # start the client
     async with bot:
         await bot.start(APITOKEN)
+
 
 asyncio.run(main())

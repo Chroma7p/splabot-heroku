@@ -1,7 +1,8 @@
-from discord.ext import commands,tasks
+from discord.ext import commands, tasks
 from discord import app_commands
 import discord
-from get_now_info import maketext
+from cogs.util.get_now_info import maketext
+
 
 class NowCog(commands.Cog):
     def __init__(self, bot):
@@ -10,20 +11,17 @@ class NowCog(commands.Cog):
     # Cogが読み込まれた時に発動
     @commands.Cog.listener()
     async def on_ready(self):
-        print('NowCog on ready!')
+        print("NowCog on ready!")
 
     # コマンドの記述
-    @app_commands.command(name="now",description="現在の各ルールの情報を表示します。")
-    async def now(self, interaction:discord.Interaction):
+    @app_commands.command(name="now", description="現在の各ルールの情報を表示します。")
+    async def now(self, interaction: discord.Interaction):
         try:
-            txt=maketext()
+            txt = maketext()
         except Exception as e:
             print(e)
-            txt="情報の取得に失敗しました"
+            txt = "情報の取得に失敗しました"
         await interaction.response.send_message(txt)
-    
-
-
 
 
 # Cogとして使うのに必要なsetup関数

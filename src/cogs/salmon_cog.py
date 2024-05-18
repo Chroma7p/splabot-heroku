@@ -1,7 +1,7 @@
 from discord.ext import commands, tasks
 from discord import app_commands
 import discord
-from get_salmonrun_info import maketext
+from cogs.util.get_salmonrun_info import maketext
 from datetime import datetime, timedelta, timezone
 from cogs.notif_channel import channels
 
@@ -19,14 +19,14 @@ class SalmonCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print('SalmonCog on ready!')
+        print("SalmonCog on ready!")
         await self.update_presence()
 
     async def update_presence(self):
         print(f"update_presence {self.next}")
         try:
             now = datetime.now(tz=tz_jst)
-            time_for_next = self.next-now
+            time_for_next = self.next - now
             txt = f"[あと{time_for_next.seconds//3600+time_for_next.days*24}時間]{self.next.strftime('%d日%H:%M')}まで サーモンラン"
             print(txt)
             await self.bot.change_presence(activity=discord.Game(name=txt))
@@ -34,7 +34,9 @@ class SalmonCog(commands.Cog):
             print(e)
 
     # コマンドの記述
-    @app_commands.command(name="salmon", description="現在のサーモンランの情報を表示します。")
+    @app_commands.command(
+        name="salmon", description="現在のサーモンランの情報を表示します。"
+    )
     async def salmon(self, interaction: discord.Interaction):
         txt, self.next = maketext()
         await interaction.response.send_message(txt)

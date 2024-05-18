@@ -1,6 +1,6 @@
-from get_spla_info import get_spla_info
+from cogs.util.get_spla_info import get_spla_info
 from datetime import datetime
-from weapon import salmon_weapon_info
+from cogs.util.weapon import salmon_weapon_info
 
 
 def maketext():
@@ -15,10 +15,8 @@ def maketext():
             text += "### **つぎ**\n"
         elif i == 2:
             text += "### **そのつぎ**\n"
-        start: datetime = datetime.strptime(
-            day["start_time"], "%Y-%m-%dT%H:%M:%S%z")
-        end: datetime = datetime.strptime(
-            day["end_time"], "%Y-%m-%dT%H:%M:%S%z")
+        start: datetime = datetime.strptime(day["start_time"], "%Y-%m-%dT%H:%M:%S%z")
+        end: datetime = datetime.strptime(day["end_time"], "%Y-%m-%dT%H:%M:%S%z")
         text += f"{start.strftime('%Y-%m-%d %H:%M')}~{end.strftime('%Y-%m-%d %H:%M')}\n"
         stage = day["stage"]["name"]
         if stage == "":

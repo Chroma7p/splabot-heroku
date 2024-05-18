@@ -2,3 +2,8 @@ __pycache__
 .vscode
 .env
 sample.json
+.tmp
+.tox
+.venv
+dist
+src/bot.egg-info

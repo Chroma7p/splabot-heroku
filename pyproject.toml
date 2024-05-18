@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "splabot-heroku"
+name = "splabot"
 version = "0.1.0"
 description = ""
 authors = ["Chroma7p <nahco3,hcl@gmail.com>"]
@@ -11,8 +11,8 @@ discord = "^2.3.2"
 requests = "^2.31.0"
 python-dotenv = "^1.0.1"
 pytest = "^8.2.0"
-
+tox = "^4.15.0"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

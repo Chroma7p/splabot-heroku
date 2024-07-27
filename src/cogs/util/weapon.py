@@ -13,7 +13,7 @@ class Weapon:
         return f"[{self.weapon_type}] **{self.main}** : {self.sub}, {self.special}"
 
 
-def get_weapon_info(file_name="weapondata.csv"):
+def get_weapon_info(file_name="src/cogs/util/weapondata.csv"):
     weapon_list = []
 
     with open(file_name, mode="r", encoding="utf-8") as csvfile:

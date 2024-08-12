@@ -21,7 +21,7 @@ class WeaponCog(commands.Cog):
     # コマンドの記述
     @app_commands.command(name="gacha", description="ブキガチャを引きます(重複あり)。")
     @app_commands.describe(n="引く個数を選んでね")
-    async def gacha(self, interaction: discord.Interaction, n: int = 4):
+    async def gacha(self, interaction: discord.Interaction, n: int = 1):
         if n > 10:
             n = 10
         elif n < 1:

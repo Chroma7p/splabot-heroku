@@ -12,6 +12,7 @@ requests = "^2.31.0"
 python-dotenv = "^1.0.1"
 pytest = "^8.2.0"
 tox = "^4.15.0"
+async-timeout = "^5.0.1"
 
 [build-system]
 requires = ["setuptools"]
